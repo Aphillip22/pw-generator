@@ -11,10 +11,10 @@ var pwLength = function() {
             return pwLength();
         }
         else {
-            charType();
+            pwType();
         }
 }
-  var charType = function() {
+  var pwType = function() {
     //ask for character type
     var promptType = window.prompt("Enter a character type: special, numeric, uppercase, lowercase, all.");
     // convert promptType to all lowercase
@@ -37,31 +37,31 @@ var pwLength = function() {
 
   function writePassword() {
     var passwordText = document.querySelector("#password");
-    passwordText.value = Password;
+    passwordText.value = retVal;
     //evaluate character type
     var charSet = "";
-    if(charType === "lowercase" ) {
+    if(pwType === "lowercase" ) {
       charSet = "abcdefghijklmnopqrstuvwxyz";
-    } else if(charType === "uppercase" ) {
+    } else if(pwType === "uppercase" ) {
       charSet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    } else if(charType === "numeric" ) {
+    } else if(pwType === "numeric" ) {
       charSet = "0123456789";
-    } else if(charType === "special" ) {
+    } else if(pwType === "special" ) {
       charSet = "!$%&'()*+,-./:;<=>?@[]^_`{|}~";
-    } else if(charType === "all") {
+    } else if(pwType === "all") {
       charSet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!$%&'()*+,-./:;<=>?@[]^_`{|}~"
     }
     console.log(charSet);
-    var charLength = pwLength;
+    
     //return value
-    var Password = "";
-    for (var i = 0; i < charLength; i++) {
+    var retVal = "";
+    for (var i = 0; i < pwLength; i++) {
       //picks a character within charSet at index of random number
-      Password += charSet.charAt(Math.floor(Math.random() * charSet.pwLength));
+      retVal += charSet.charAt(Math.random() * charSet.length);
     }
-    console.log(Password);
-    return Password;
+    console.log(retVal);
+    return retVal
   }
-  
+ 
   // Add event listener to generate button
   generateBtn.addEventListener("click", pwLength);
